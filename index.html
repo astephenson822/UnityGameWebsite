@@ -17,28 +17,33 @@
       }
 
       .hero {
-        padding: 3rem 1.5rem 2rem;
+        min-height: 70vh;              /* make the hero section tall */
+        padding: 4rem 1.5rem 4rem;
         text-align: center;
         background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .hero-title {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 3rem;
+        margin-bottom: 0.75rem;
         font-weight: 700;
       }
 
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         max-width: 640px;
         margin: 0 auto;
-        opacity: 0.9;
+        opacity: 0.95;
       }
 
       .game-wrapper {
         max-width: 1100px;
-        margin: 0 auto;
-        padding: 1.5rem 1rem 3rem;
+        margin: 3rem auto 3rem;        /* extra margin so game starts lower */
+        padding: 0 1rem 3rem;
       }
 
       #unity-container {
@@ -47,11 +52,29 @@
 
       .game-description {
         max-width: 800px;
-        margin: 2rem auto 0;
+        margin: 2.5rem auto 0;
         font-size: 1rem;
         line-height: 1.6;
         text-align: center;
         color: #e5e5e5;
+      }
+
+      .site-footer {
+        border-top: 1px solid #222;
+        background: #050816;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+
+      .site-footer a {
+        color: #60a5fa;
+        text-decoration: none;
+      }
+
+      .site-footer a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -59,9 +82,9 @@
   <body>
     <!-- Hero section above the game -->
     <header class="hero">
-      <h1 class="hero-title">2D Platformer</h1>
+      <h1 class="hero-title">Andrew's 2D Survival Game</h1>
       <p class="hero-subtitle">
-        A tiny Unity world running right in your browser. Move, jump, and explore this simple 2D platformer demo.
+        Try to gather resources, dodge danger, and see how long you can survive in this small Unity world.
       </p>
     </header>
 
@@ -93,14 +116,25 @@
           deploying everything as a simple website.
         </p>
         <p>
-          You can extend this page later with instructions, controls, patch notes, or portfolio content
-          while keeping the playable build embedded right here.
+          Over time, you can expand this page with controls, tips, patch notes, or portfolio details while
+          keeping the playable build embedded right here in the center of the page.
         </p>
       </section>
     </main>
 
+    <!-- Footer below everything -->
+    <footer class="site-footer">
+      <div>
+        &copy; <span id="year"></span> Andrew Stephenson &middot;
+        Built with Unity WebGL and hosted on GitHub Pages.
+      </div>
+    </footer>
+
     <!-- Unity loader script (unchanged) -->
     <script>
+      // small helper for the footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
       var canvas = document.querySelector("#unity-canvas");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
